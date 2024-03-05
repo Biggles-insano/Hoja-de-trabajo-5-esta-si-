@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 RANDOM_SEED = 42
 RAM_SIZE = 100
-CPU_SPEED = 1  
+CPU_SPEED = 0.5  
 
 class Proceso:
     def __init__(self, env, ram, cpu):
