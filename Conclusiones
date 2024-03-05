@@ -1,0 +1,4 @@
+Estrategias para reducir el tiempo de ejecución:
+1) Incrementar la memoria; aumentar la cantidad de memoria RAM disponible para los procesos. Esto reduce el tiempo de espera de los procesos en la cola de espera para obtener memoria.
+2) Procesador más rapido; Aumentar la velocidad del procesador implica que cada proceso se ejecutará más rápidamente. (Instrucción por unidad de tiempo).
+3) Usar 2 procesadores; Emplear dos procesadores en lugar de uno significa que se pueden atender más procesos simultáneamente.
