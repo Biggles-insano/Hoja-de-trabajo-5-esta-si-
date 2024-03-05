@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 RANDOM_SEED = 42
 RAM_SIZE = 100
-CPU_SPEED = 0.5  
+CPU_SPEED = 0.5   #Se le pregunto a ChatGPT "como puedo hacer para ejecutar 6 instrucciones por unidad de tiempo en python, también estoy usando simpy, numpy y matplotlib" y dijo que era así
 
 class Proceso:
     def __init__(self, env, ram, cpu):
