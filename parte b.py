@@ -50,7 +50,7 @@ def ejecutar_simulacion(cant_procesos, intervalo_llegada):
 
 
 cant_procesos = [25, 50, 100, 150, 200]
-intervalos_llegada_nuevos = [5, 1]
+intervalos_llegada_nuevos = [5, 1] #intervalo más pequeño
 
 for intervalo_nuevo in intervalos_llegada_nuevos:
     tiempos_promedio_nuevos = []
