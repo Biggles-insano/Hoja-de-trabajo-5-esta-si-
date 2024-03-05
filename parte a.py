@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 RANDOM_SEED = 42
 RAM_SIZE = 100
-CPU_SPEED = 1  # 3 instrucciones por unidad de tiempo
+CPU_SPEED = 1  
 
 class Proceso:
     def __init__(self, env, ram, cpu):
@@ -32,35 +32,34 @@ def ejecutar_simulacion(cant_procesos, intervalo_llegada):
     cpu = simpy.Resource(env, capacity=1)
     tiempos_procesos = []
 
+    procesos = []
     def proceso_generator(env, ram, cpu):
         for _ in range(cant_procesos):
             proceso = Proceso(env, ram, cpu)
+            procesos.append(proceso)
             env.process(proceso.run())
             yield env.timeout(random.expovariate(1.0 / intervalo_llegada))
 
     env.process(proceso_generator(env, ram, cpu))
     env.run()
 
-    for proceso in env.processes:
-        if isinstance(proceso, Proceso):
-            tiempos_procesos.append(proceso.end_time - proceso.creation_time)
+    for proceso in procesos:
+        tiempos_procesos.append(proceso.end_time - proceso.creation_time)
 
     return tiempos_procesos
 
-# Ejemplo de uso
+
 tiempos_promedio = []
 desviaciones_estandar = []
 cant_procesos = [25, 50, 100, 150, 200]
-intervalos_llegada = [10, 5, 1]
+intervalos_llegada = 10
 
 for cant in cant_procesos:
-    tiempos = []
-    for intervalo in intervalos_llegada:
-        tiempos.extend(ejecutar_simulacion(cant, intervalo))
+    tiempos = ejecutar_simulacion(cant, intervalos_llegada)
     tiempos_promedio.append(np.mean(tiempos))
     desviaciones_estandar.append(np.std(tiempos))
 
-# Graficar resultados
+
 plt.errorbar(cant_procesos, tiempos_promedio, yerr=desviaciones_estandar, fmt='o')
 plt.xlabel('Número de procesos')
 plt.ylabel('Tiempo promedio en la computadora')
